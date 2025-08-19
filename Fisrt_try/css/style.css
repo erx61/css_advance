@@ -41,11 +41,15 @@ body{
     left: 50%;
     /* background-color: red; */
     transform: translate(-50%, -50%);
+    /* Align */
 }
 
 .heading-primary{
     color: #FFF;
     text-transform: uppercase;
+
+    /* To avoid the last jump in the movement of the aniamtion*/
+    backface-visibility: hidden;
 }
 
 .heading-primary-main{
@@ -53,10 +57,59 @@ body{
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    /* The log way to make the animation */
+    animation-name: moveInLeft;
+    animation-duration: 4s;
+    animation-timing-function: ease-out;
 }
+
 .heading-primary-sub{
     display: block;
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 17.4px;
+
+    animation: moveInRight 4s ease-out;
+}
+
+@keyframes moveInLeft{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80%{
+        transform: translateX(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInRight{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80%{
+        transform: translateX(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link,
+/* This state when the user has already clicked */
+.btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+    display: inline-block;
 }
